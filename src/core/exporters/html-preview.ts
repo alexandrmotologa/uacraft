@@ -166,6 +166,103 @@ export function exportHtmlStoryboard(pkg: CreativePackage): string {
       font-weight: 600;
       color: #ffd33d;
       font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .safe-zone-tag {
+      font-size: 11px;
+      background: #1f2937;
+      color: #38bdf8;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+
+    /* 9:16 Phone Mockup with Safe Zone Overlay */
+    .mockup-modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      z-index: 999;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .mockup-modal.open {
+      display: flex;
+    }
+
+    .phone-frame {
+      width: 320px;
+      height: 640px;
+      background: #000;
+      border-radius: 36px;
+      border: 10px solid #2d3748;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.8);
+    }
+
+    .safe-zone-guide {
+      position: absolute;
+      top: 80px;
+      left: 16px;
+      right: 64px;
+      bottom: 140px;
+      border: 2px dashed #22c55e;
+      border-radius: 8px;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #22c55e;
+      font-size: 12px;
+      font-weight: 600;
+      background: rgba(34, 197, 94, 0.08);
+    }
+
+    .tiktok-ui-right {
+      position: absolute;
+      right: 10px;
+      bottom: 120px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: center;
+      color: #fff;
+      font-size: 12px;
+    }
+
+    .tiktok-ui-bottom {
+      position: absolute;
+      left: 14px;
+      bottom: 24px;
+      right: 64px;
+      color: #fff;
+      font-size: 12px;
+    }
+
+    .mockup-text-overlay {
+      position: absolute;
+      top: 140px;
+      left: 20px;
+      right: 70px;
+      background: rgba(0,0,0,0.7);
+      color: #ffd33d;
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 14px;
+      text-align: center;
+      border: 1px solid rgba(255,211,61,0.4);
     }
 
     .audio-box {
@@ -293,6 +390,7 @@ export function exportHtmlStoryboard(pkg: CreativePackage): string {
       <p style="color: #8b949e; font-size: 13px; margin-top: 4px;">Provider: ${pkg.providerUsed} | Generated ${pkg.generatedAt}</p>
     </div>
     <div class="metrics-bar">
+      <button class="copy-btn" onclick="openSafeZoneMockup()" style="background:#1f2937; border-color:#38bdf8; color:#38bdf8; font-weight:600; padding:6px 12px;">📱 Test 9:16 Safe Zones</button>
       <div class="metric-pill">Hooks: <strong>${pkg.summary.totalHooks}</strong></div>
       <div class="metric-pill">Copies: <strong>${pkg.summary.totalCopies}</strong></div>
       <div class="metric-pill">Scripts: <strong>${pkg.summary.totalScripts}</strong></div>
@@ -304,6 +402,30 @@ export function exportHtmlStoryboard(pkg: CreativePackage): string {
   <div class="container">
     <div class="tabs" id="angleTabs"></div>
     <div id="contentArea"></div>
+  </div>
+
+  <!-- Safe Zone Preview Modal -->
+  <div class="mockup-modal" id="safeZoneModal" onclick="closeSafeZoneMockup(event)">
+    <div class="phone-frame" onclick="event.stopPropagation()">
+      <div style="position: absolute; top: 12px; left: 0; right: 0; text-align: center; font-size: 11px; color: #64748b;">9:16 FEED SIMULATOR</div>
+      <div class="safe-zone-guide">SAFE ZONE<br>(No Platform UI Collision)</div>
+      <div class="mockup-text-overlay" id="mockupOverlayText">"Why did 99% fail this level?"</div>
+      
+      <!-- Simulated TikTok / Reels UI -->
+      <div class="tiktok-ui-right">
+        <div style="width: 36px; height: 36px; background: #6366f1; border-radius: 50%; border: 2px solid #fff;"></div>
+        <div>❤️<br><span style="font-size:10px;">14.2K</span></div>
+        <div>💬<br><span style="font-size:10px;">842</span></div>
+        <div>↗️<br><span style="font-size:10px;">Share</span></div>
+        <div style="width: 28px; height: 28px; background: #334155; border-radius: 50%; border: 2px solid #64748b;"></div>
+      </div>
+
+      <div class="tiktok-ui-bottom">
+        <div style="font-weight: 700; margin-bottom: 4px;">@${pkg.gameId}</div>
+        <div style="font-size: 11px; color: #cbd5e1;">Clear the board and beat level 4! 🎮 #gaming #mobilegame</div>
+        <div style="margin-top: 8px; background: #3b82f6; padding: 6px 12px; border-radius: 4px; text-align: center; font-weight: 700; font-size: 11px;">Install Now</div>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -331,7 +453,21 @@ export function exportHtmlStoryboard(pkg: CreativePackage): string {
       });
     }
 
-    function copyToClipboard(text, btn) {
+    function openSafeZoneMockup(customText) {
+      const modal = document.getElementById('safeZoneModal');
+      const textEl = document.getElementById('mockupOverlayText');
+      if (customText) {
+        textEl.textContent = '"' + customText + '"';
+      } else {
+        const hooks = packageData.hooks.filter(h => h.angle === currentAngle);
+        if (hooks.length > 0) textEl.textContent = '"' + hooks[0].textOverlay + '"';
+      }
+      modal.classList.add('open');
+    }
+
+    function closeSafeZoneMockup(e) {
+      document.getElementById('safeZoneModal').classList.remove('open');
+    }
       navigator.clipboard.writeText(text).then(() => {
         const orig = btn.textContent;
         btn.textContent = 'Copied!';
@@ -409,7 +545,10 @@ export function exportHtmlStoryboard(pkg: CreativePackage): string {
               <span class="card-title">\${hook.headline}</span>
               <span class="badge">Thumbstop: \${hook.thumbstopScoreEstimate}/100</span>
             </div>
-            <div class="text-overlay-box">"\${hook.textOverlay}"</div>
+            <div class="text-overlay-box">
+              <span>"\${hook.textOverlay}"</span>
+              <button class="safe-zone-tag" onclick="openSafeZoneMockup('\${hook.textOverlay.replace(/'/g, "\\'")}')" style="cursor:pointer; border:none;">Safe Zone: Top 25%-45%</button>
+            </div>
             <p style="font-size: 13px;"><strong>Visual Action:</strong> \${hook.visualAction}</p>
             <div class="audio-box"><strong>Audio/SFX:</strong> \${hook.audioDirection}</div>
             <p style="font-size: 12px; color: #8b949e;"><strong>Driver:</strong> \${hook.psychologyBreakdown}</p>

@@ -5,6 +5,8 @@ import { AngleType } from "../../types";
 import { generateCreativePackage } from "../../core/engine";
 import { exportMetaAdsCsv } from "../../core/exporters/meta-csv";
 import { exportTikTokAdsCsv } from "../../core/exporters/tiktok-csv";
+import { exportGoogleUacCsv } from "../../core/exporters/google-uac-csv";
+import { exportAppLovinJson } from "../../core/exporters/applovin-export";
 import { exportAirtableCsv, exportAirtableJson } from "../../core/exporters/airtable-export";
 import { exportMarkdownBrief } from "../../core/exporters/markdown-brief";
 import { exportHtmlStoryboard } from "../../core/exporters/html-preview";
@@ -116,6 +118,20 @@ export async function generateCommand(options: GenerateCommandOptions): Promise<
       const ttPath = path.join(outDir, `${pkg.gameId}_tiktok_ads_bulk.csv`);
       fs.writeFileSync(ttPath, ttCsv, "utf8");
       createdFiles.push(ttPath);
+    }
+
+    if (isAll || requestedFormats.includes("google") || requestedFormats.includes("uac")) {
+      const googleCsv = exportGoogleUacCsv(pkg);
+      const googlePath = path.join(outDir, `${pkg.gameId}_google_uac_bulk.csv`);
+      fs.writeFileSync(googlePath, googleCsv, "utf8");
+      createdFiles.push(googlePath);
+    }
+
+    if (isAll || requestedFormats.includes("applovin") || requestedFormats.includes("unity")) {
+      const alJson = exportAppLovinJson(pkg);
+      const alPath = path.join(outDir, `${pkg.gameId}_applovin_specs.json`);
+      fs.writeFileSync(alPath, alJson, "utf8");
+      createdFiles.push(alPath);
     }
 
     if (isAll || requestedFormats.includes("airtable")) {

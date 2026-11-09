@@ -52,7 +52,37 @@ TikTok Ads requires short, high-engagement captions with strict length limits:
 
 ---
 
-## 3. Airtable and Notion Creative Pipelines
+## 3. Google App Campaigns (Google UAC Bulk Import CSV)
+
+### File: `<game-id>_google_uac_bulk.csv`
+
+### Specification Overview
+Google App Campaigns automatically rotates text and video assets across Google Search, Google Play, YouTube, and the Google Display Network. Google imposes character constraints:
+* `Headline 1` through `Headline 5`: Strictly constrained to 30 characters or fewer.
+* `Description 1` through `Description 5`: Strictly constrained to 90 characters or fewer.
+* `Final URL`: Store download destination link.
+
+### Upload Workflow
+1. In Google Ads, select your App Campaign.
+2. Under Ad Groups, navigate to Ads & Assets.
+3. Click More > Upload Spreadsheet or paste via Google Ads Editor.
+4. Review headlines and descriptions; Google will rotate all combinations automatically.
+
+---
+
+## 4. AppLovin & Unity Ads Interactive Endcards
+
+### Files: `<game-id>_applovin_specs.json`
+
+### Specification Overview
+AppLovin and Unity Ads use video combined with interactive MRAID endcards:
+* MRAID v3 compliant HTML endcard snippets.
+* Mobile portrait (9:16) orientation with auto-redirect button and star ratings.
+* Structured JSON payload ready for automated programmatic asset ingestion.
+
+---
+
+## 5. Airtable and Notion Creative Pipelines
 
 ### Files: `<game-id>_airtable_cards.csv` and `<game-id>_airtable_cards.json`
 
@@ -76,7 +106,7 @@ TikTok Ads requires short, high-engagement captions with strict length limits:
 
 ---
 
-## 4. Markdown Production Briefs
+## 6. Markdown Production Briefs
 
 ### File: `<game-id>_CREATIVE_BRIEFS.md`
 
@@ -90,12 +120,13 @@ Can be pasted directly into Jira tickets, GitHub Discussions, or Notion pages.
 
 ---
 
-## 5. Standalone Interactive HTML Storyboard
+## 7. Standalone Interactive HTML Storyboard with 9:16 Safe Zones
 
 ### File: `<game-id>_storyboard.html`
 
 The HTML storyboard operates offline in any browser with zero external dependencies:
 * Tab switching between the five psychological angles.
 * Integrated audio and visual beat timeline player with play/pause and progress scrubbing.
+* Interactive 9:16 mobile mockup mode testing TikTok and Instagram Reels UI safe zones.
 * One-click clipboard copy buttons for prompt recipes.
-* Character count badges for Meta and TikTok copy compliance.
+* Character count badges for Meta, Google, and TikTok copy compliance.

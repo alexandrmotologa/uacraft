@@ -4,6 +4,8 @@ import chalk from "chalk";
 import { CreativePackage } from "../../types";
 import { exportMetaAdsCsv } from "../../core/exporters/meta-csv";
 import { exportTikTokAdsCsv } from "../../core/exporters/tiktok-csv";
+import { exportGoogleUacCsv } from "../../core/exporters/google-uac-csv";
+import { exportAppLovinJson } from "../../core/exporters/applovin-export";
 import { exportAirtableCsv, exportAirtableJson } from "../../core/exporters/airtable-export";
 import { exportMarkdownBrief } from "../../core/exporters/markdown-brief";
 import { exportHtmlStoryboard } from "../../core/exporters/html-preview";
@@ -50,6 +52,20 @@ export async function exportCommand(options: ExportCommandOptions): Promise<void
     const ttCsv = exportTikTokAdsCsv(pkg);
     const dest = outPath || path.join(baseDir, `${pkg.gameId}_tiktok_ads_bulk.csv`);
     fs.writeFileSync(dest, ttCsv, "utf8");
+    generatedFiles.push(dest);
+  }
+
+  if (format === "all" || format === "google" || format === "uac") {
+    const gCsv = exportGoogleUacCsv(pkg);
+    const dest = outPath || path.join(baseDir, `${pkg.gameId}_google_uac_bulk.csv`);
+    fs.writeFileSync(dest, gCsv, "utf8");
+    generatedFiles.push(dest);
+  }
+
+  if (format === "all" || format === "applovin" || format === "unity") {
+    const alJson = exportAppLovinJson(pkg);
+    const dest = outPath || path.join(baseDir, `${pkg.gameId}_applovin_specs.json`);
+    fs.writeFileSync(dest, alJson, "utf8");
     generatedFiles.push(dest);
   }
 

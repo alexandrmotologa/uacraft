@@ -148,6 +148,34 @@ Validates schemas and enforces mobile ad network character boundaries.
 * `-p, --profile <file>`: Validates a game profile against required fields.
 * `-k, --package <file>`: Checks headlines (<= 40 chars), primary texts (<= 125 chars), and script pacing (WPM).
 
+### `uacraft matrix`
+Generates a full factorial A/B testing matrix with standardized UA naming taxonomy.
+* `-i, --input <file>`: Path to creative package JSON.
+* `-o, --output <file>`: Output CSV path for batch-rendering sheet.
+* `-m, --max-per-angle <num>`: Maximum combinations per angle (default: 12).
+* `-r, --ratio <ratio>`: Aspect ratio (`9:16` or `1:1`).
+
+### `uacraft lint`
+Audits copy and headlines against Meta and TikTok advertising standards.
+* `-k, --package <file>`: Path to creative package JSON to audit.
+* `--fix`: Automatically rewrites policy violations, punctuation spam, and text truncation.
+* `-o, --output <file>`: Output path for auto-fixed package.
+
+### `uacraft plan`
+Calculates mathematical campaign limits to ensure ad sets exit the Meta or TikTok Learning Phase.
+* `-b, --budget <number>`: Weekly UA budget in dollars.
+* `-c, --cpi <number>`: Target cost per install (CPI) in dollars.
+* `-p, --platform <platform>`: Target network (`meta`, `tiktok`, `google`).
+
+### `uacraft teardown`
+Deconstructs competitor ad copy and generates counter-angles to out-position them.
+* `-t, --ad-text <text>`: Competitor ad transcript or visual scene description.
+* `-p, --profile <file>`: Your game profile JSON.
+* `-o, --output <file>`: Output path for counter-strategy JSON report.
+
+### `uacraft wizard`
+Interactive terminal questionnaire guiding you through 8 questions to scaffold a game profile and generate creative assets on the spot.
+
 ---
 
 ## Dual Mode Execution
@@ -171,6 +199,19 @@ When configured with an API key, UACraft prompts Google Gemini, OpenAI, Anthropi
 ### TikTok Ads Manager Bulk Import
 * Ad captions tailored to TikTok specifications (12-100 characters).
 * Direct mapping between video script asset IDs and ad creative rows.
+
+### Google App Campaigns (Google UAC) Bulk Import
+* Headlines constrained to 30 characters or fewer (up to 5 headlines).
+* Descriptions constrained to 90 characters or fewer (up to 5 descriptions).
+* Auto-generated ad groups grouped by psychological angle.
+
+### AppLovin & Unity Ads Interactive Endcards
+* MRAID v3 compliant companion endcard HTML templates.
+* Mobile portrait (9:16) layout with pulsing CTA buttons and star ratings.
+
+### 9:16 Feed Safe Zone Simulator
+* Interactive safe zone preview modal inside the HTML storyboard.
+* Highlights safe margins (top 20%-45%) to prevent text collisions with native TikTok and Reels UI buttons.
 
 ### Airtable & Notion Creative Pipelines
 * Exports CSV and JSON formats structured for motion design Kanban boards.

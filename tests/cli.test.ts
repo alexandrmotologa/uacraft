@@ -49,4 +49,40 @@ describe("CLI Commands", () => {
     expect(out).toContain("UACraft Creative Fatigue Diagnosis");
     expect(out).toContain("Actionable Recommendations");
   });
+
+  it("runs matrix command and exports A/B testing matrix CSV", () => {
+    const pkg = path.join(outputDir, "pin-pull-rescue_creative_package.json");
+    const matrixOut = path.join(outputDir, "cli_matrix_test.csv");
+    const out = execSync(`node "${cliPath}" matrix --input "${pkg}" --output "${matrixOut}"`, {
+      encoding: "utf8",
+    });
+    expect(out).toContain("A/B Combinatorial Matrix Engine");
+    expect(fs.existsSync(matrixOut)).toBe(true);
+  });
+
+  it("runs lint command to audit advertising policy compliance", () => {
+    const pkg = path.join(outputDir, "pin-pull-rescue_creative_package.json");
+    const out = execSync(`node "${cliPath}" lint --package "${pkg}"`, {
+      encoding: "utf8",
+    });
+    expect(out).toContain("Ad Policy & Guidelines Linter");
+    expect(out).toContain("Policy Health Score");
+  });
+
+  it("runs plan command to calculate budget testing limits", () => {
+    const out = execSync(`node "${cliPath}" plan --budget 3000 --cpi 1.80 --platform meta`, {
+      encoding: "utf8",
+    });
+    expect(out).toContain("Media Buying & Testing Budget Planner");
+    expect(out).toContain("Campaign Mathematical Bounds");
+  });
+
+  it("runs teardown command on competitor ad copy", () => {
+    const out = execSync(
+      `node "${cliPath}" teardown --ad-text "Mother and baby freezing in cabin, player pulls wrong pin and burns cabin"`,
+      { encoding: "utf8" }
+    );
+    expect(out).toContain("Competitor Ad Teardown & Counter-Strategy");
+    expect(out).toContain("High-Impact Counter-Angle Strategies");
+  });
 });
