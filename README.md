@@ -1,8 +1,60 @@
-# UACraft
+<p align="center">
+  <img src="docs/images/logo.png" alt="UACraft Logo" width="130" style="border-radius: 26px;" />
+</p>
 
-> Multi-angle ad creative, video hook, and copy mutation engine for mobile user acquisition teams.
+<h1 align="center">UACraft</h1>
 
-UACraft transforms game mechanics profiles and performance metrics into production-ready ad variations, opening video hooks, timed video scripts, concept art prompt recipes, and bulk import files for Meta and TikTok Ads.
+<p align="center">
+  <strong>Autonomous Ad Creative, Video Hook, and Copy Mutation Engine for Mobile User Acquisition</strong>
+</p>
+
+<p align="center">
+  <a href="#features"><img src="https://img.shields.io/badge/Status-Production--Ready-10b981.svg" alt="Status" /></a>
+  <a href="#installation"><img src="https://img.shields.io/badge/Node.js-%3E%3D18.0.0-3b82f6.svg" alt="Node" /></a>
+  <a href="#testing"><img src="https://img.shields.io/badge/Tests-38%20Passing-10b981.svg" alt="Tests" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-gray.svg" alt="License" /></a>
+</p>
+
+UACraft transforms game mechanics profiles and performance metrics into production-ready ad variations, opening video hooks, timed video scripts, concept art prompt recipes, and bulk import files for Meta, TikTok, and Google App Campaigns.
+
+---
+
+## Live Demo & Visual Interfaces
+
+UACraft pairs an automated CLI mutation engine with an interactive standalone HTML storyboard and real-time 9:16 mobile safe zone simulator.
+
+<p align="center">
+  <img src="docs/images/uacraft_demo.gif" alt="UACraft Animated Demo" width="100%" style="border-radius: 10px; border: 1px solid #30363d;" />
+</p>
+
+<p align="center">
+  <em>Autonomous generation, creative fatigue diagnosis, interactive angle review, and 9:16 Feed Safe Zone simulation across mobile and desktop viewports.</em>
+</p>
+
+### Responsive Multi-Angle Storyboard & Safe Zone Simulator
+
+The generated standalone storyboard adapts dynamically to any screen width, offering responsive inspection on desktop workstations, tablets, and smartphones:
+
+<table width="100%">
+  <tr>
+    <td width="58%" valign="top">
+      <h4 align="center">Interactive Desktop Storyboard</h4>
+      <img src="docs/images/uacraft_storyboard.png" alt="Desktop Storyboard" width="100%" style="border-radius: 8px; border: 1px solid #30363d;" />
+      <p align="center"><sub>Browse hooks, scripts with interactive timed beat players, and image prompts categorized by psychological angle.</sub></p>
+    </td>
+    <td width="42%" valign="top">
+      <h4 align="center">9:16 Feed Safe Zone Simulator</h4>
+      <img src="docs/images/uacraft_safe_zone.png" alt="9:16 Safe Zone Simulator" width="100%" style="border-radius: 8px; border: 1px solid #30363d;" />
+      <p align="center"><sub>Validates text overlays against TikTok, Reels, and Shorts native UI boundaries to prevent occlusion.</sub></p>
+    </td>
+  </tr>
+</table>
+
+### Authentic Terminal Pipeline Run
+
+<p align="center">
+  <img src="docs/images/uacraft_terminal_run.png" alt="UACraft Terminal Run" width="100%" style="border-radius: 8px; border: 1px solid #30363d;" />
+</p>
 
 ---
 
@@ -82,6 +134,8 @@ The command exports production-ready files directly into `./output`:
 * `pin-rescue_creative_package.json`: Complete master JSON package.
 * `pin-rescue_meta_ads_bulk.csv`: Formatted for Meta Ads Manager bulk upload.
 * `pin-rescue_tiktok_ads_bulk.csv`: Formatted for TikTok Ads Manager bulk import.
+* `pin-rescue_google_uac_bulk.csv`: Formatted for Google App Campaigns (30-char headline / 90-char description limits).
+* `pin-rescue_applovin_specs.json`: Companion endcard specifications for AppLovin and Unity Ads.
 * `pin-rescue_airtable_cards.csv`: Ready for Airtable Creative Kanban pipelines.
 * `pin-rescue_CREATIVE_BRIEFS.md`: Production briefs for motion designers.
 * `pin-rescue_storyboard.html`: Standalone interactive visual storyboard viewer.
@@ -109,7 +163,7 @@ Generates multi-angle ad creative assets.
 * `-c, --count <num>`: Variations per angle. Default: `2`.
 * `-d, --durations <list>`: Video script durations in seconds (`15,30`).
 * `-o, --output-dir <dir>`: Output folder for generated files. Default: `./output`.
-* `-f, --formats <list>`: Target formats (`all`, `meta`, `tiktok`, `airtable`, `markdown`, `html`).
+* `-f, --formats <list>`: Target formats (`all`, `meta`, `tiktok`, `google`, `applovin`, `airtable`, `markdown`, `html`).
 * `--offline`: Force offline heuristic generation without API calls.
 * `--provider <name>`: LLM provider (`gemini`, `openai`, `anthropic`, `custom`).
 * `--api-key <key>`: Provider API key.
@@ -125,7 +179,7 @@ Takes an existing winning script and generates variations through hook swaps and
 ### `uacraft export`
 Converts a previously generated JSON run into specific ad network formats.
 * `-i, --input <file>`: Path to creative package JSON.
-* `-f, --format <format>`: Format (`meta`, `tiktok`, `airtable`, `markdown`, `html`, `all`).
+* `-f, --format <format>`: Format (`meta`, `tiktok`, `google`, `applovin`, `airtable`, `markdown`, `html`, `all`).
 * `-o, --output <file>`: Optional custom output file path.
 
 ### `uacraft analyze`
@@ -263,11 +317,13 @@ uacraft/
 │   │   └── index.ts                    # Commander program setup
 │   ├── core/
 │   │   ├── analytics/
-│   │   │   └── fatigue-analyzer.ts     # Creative decay scoring and angle rotation
+│   │   │   ├── budget-planner.ts       # Meta Learning Phase budget allocator
+│   │   │   ├── fatigue-analyzer.ts     # Creative decay scoring and angle rotation
+│   │   │   └── policy-linter.ts        # Meta/TikTok advertising standards auditor
 │   │   ├── angles/                     # The 5 psychological angle strategies
 │   │   ├── engine.ts                   # Master creative engine orchestrator
-│   │   ├── exporters/                  # Meta CSV, TikTok CSV, Airtable, Markdown, HTML
-│   │   ├── generator/                  # Hook, copy, script, and prompt generators
+│   │   ├── exporters/                  # Meta, TikTok, Google, AppLovin, Airtable, Markdown, HTML
+│   │   ├── generator/                  # Hook, copy, script, matrix, and prompt generators
 │   │   ├── llm/                        # Multi-provider client and structured prompts
 │   │   └── mutator/                    # Hook swapping and headline mutation
 │   ├── types/
@@ -288,7 +344,7 @@ Run the test suite with Vitest:
 npm test
 ```
 
-All 7 test suites verify angle generation, script timing algebra, character bounds, CSV escaping, HTML output, fatigue scoring, and CLI command execution.
+All 13 test suites verify angle generation, script timing algebra, character bounds, CSV escaping, HTML output, fatigue scoring, budget planning, policy linting, matrix generation, and CLI command execution.
 
 ---
 

@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <clipPath id="squircle-clip">
+      <rect x="24" y="24" width="976" height="976" rx="220" />
+    </clipPath>
+
+    <linearGradient id="cyan-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f5ff"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+
+    <linearGradient id="amber-accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#ea580c"/>
+    </linearGradient>
+
+    <linearGradient id="slate-body" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#334155"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <filter id="subtle-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#000000" flood-opacity="0.16" />
+    </filter>
+  </defs>
+
+  <!-- Luxury White Squircle Container -->
+  <rect x="24" y="24" width="976" height="976" rx="220" fill="#ffffff" stroke="#e2e8f0" stroke-width="6" />
+
+  <g clip-path="url(#squircle-clip)">
+    <g transform="translate(512, 512)" filter="url(#subtle-shadow)">
+
+      <!-- Hexagonal Architectural Gateway -->
+      <polygon points="
+        0,-390
+        338,-195
+        338,195
+        0,390
+        -338,195
+        -338,-195
+      " fill="none" stroke="#0f172a" stroke-width="38" stroke-linejoin="round" />
+
+      <polygon points="
+        0,-355
+        307,-177
+        307,177
+        0,355
+        -307,177
+        -307,-177
+      " fill="none" stroke="#00f5ff" stroke-width="4" opacity="0.45" stroke-dasharray="16, 12" />
+
+      <!-- Corner Telemetry Nodes -->
+      <circle cx="0" cy="-390" r="10" fill="#00f5ff"/>
+      <circle cx="338" cy="-195" r="10" fill="#00f5ff"/>
+      <circle cx="338" cy="195" r="10" fill="#00f5ff"/>
+      <circle cx="0" cy="390" r="10" fill="#00f5ff"/>
+      <circle cx="-338" cy="195" r="10" fill="#00f5ff"/>
+      <circle cx="-338" cy="-195" r="10" fill="#00f5ff"/>
+
+      <!-- 100% Watertight Solid Base Silhouette for the Craft Owl -->
+      <path d="
+        M 0,-180
+        L 80,-215 L 180,-280 L 165,-180 L 225,-120 L 250,-10 L 210,120 L 180,240 L 110,320 L 0,355
+        L -110,320 L -180,240 L -210,120 L -250,-10 L -225,-120 L -165,-180 L -180,-280 L -80,-215
+        Z
+      " fill="#090d16" />
+
+      <!-- === Low-Poly Facets === -->
+
+      <!-- Ear Tufts / Horns -->
+      <polygon points="0,-180 80,-215 180,-280 120,-175" fill="#1e293b"/>
+      <polygon points="0,-180 -80,-215 -180,-280 -120,-175" fill="#334155"/>
+      <polygon points="180,-280 165,-180 120,-175" fill="#0f172a"/>
+      <polygon points="-180,-280 -165,-180 -120,-175" fill="#1e293b"/>
+
+      <!-- Crown & Upper Brow -->
+      <polygon points="0,-180 120,-175 0,-90" fill="#334155"/>
+      <polygon points="0,-180 -120,-175 0,-90" fill="#475569"/>
+      <polygon points="120,-175 165,-180 225,-120 110,-95" fill="#1e293b"/>
+      <polygon points="-120,-175 -165,-180 -225,-120 -110,-95" fill="#334155"/>
+
+      <!-- Facial Disc Temples & Cheeks -->
+      <polygon points="0,-90 110,-95 135,-15 0,-25" fill="#1e293b"/>
+      <polygon points="0,-90 -110,-95 -135,-15 0,-25" fill="#334155"/>
+
+      <polygon points="110,-95 225,-120 250,-10 145,-10" fill="#0f172a"/>
+      <polygon points="-110,-95 -225,-120 -250,-10 -145,-10" fill="#1e293b"/>
+
+      <polygon points="250,-10 210,120 120,90 145,-10" fill="#1e293b"/>
+      <polygon points="-250,-10 -210,120 -120,90 -145,-10" fill="#334155"/>
+
+      <!-- Almond Predator Eye Sockets & Optics -->
+      <!-- Left Eye Socket -->
+      <polygon points="-135,-42 -45,-25 -58,15 -140,-5" fill="#050811"/>
+      <!-- Left Eye Iris (Electric Cyan) -->
+      <polygon points="-128,-36 -52,-22 -64,9 -132,-7" fill="url(#cyan-glow)"/>
+      <!-- Left Slit Pupil (Tilted Predator Cant) -->
+      <polygon points="-94,-34 -82,-30 -86,4 -98,1" fill="#090d16"/>
+
+      <!-- Right Eye Socket -->
+      <polygon points="135,-42 45,-25 58,15 140,-5" fill="#050811"/>
+      <!-- Right Eye Iris (Electric Cyan) -->
+      <polygon points="128,-36 52,-22 64,9 132,-7" fill="url(#cyan-glow)"/>
+      <!-- Right Slit Pupil (Tilted Predator Cant) -->
+      <polygon points="94,-34 82,-30 86,4 98,1" fill="#090d16"/>
+
+      <!-- Geometric Beak (Amber Gradient Accent) -->
+      <polygon points="0,-30 -28,30 0,115" fill="#fbbf24"/>
+      <polygon points="0,-30 28,30 0,115" fill="#ea580c"/>
+      <polygon points="0,-30 -16,-5 0,-8" fill="#fef08a"/>
+      <polygon points="0,-30 16,-5 0,-8" fill="#f59e0b"/>
+
+      <!-- Lower Face & Whisker Discs (Titanium/Slate) -->
+      <polygon points="0,115 -28,30 -120,90 0,165" fill="#334155"/>
+      <polygon points="0,115 28,30 120,90 0,165" fill="#1e293b"/>
+      <polygon points="-120,90 -210,120 -130,205 0,165" fill="#1e293b"/>
+      <polygon points="120,90 210,120 130,205 0,165" fill="#0f172a"/>
+
+      <!-- Breastplate Chevron Armor Plates -->
+      <polygon points="0,165 -130,205 -95,280 0,250" fill="#475569"/>
+      <polygon points="0,165 130,205 95,280 0,250" fill="#1e293b"/>
+
+      <polygon points="0,250 -95,280 -65,335 0,315" fill="#334155"/>
+      <polygon points="0,250 95,280 65,335 0,315" fill="#1e293b"/>
+
+      <polygon points="0,315 -65,335 0,355" fill="#1e293b"/>
+      <polygon points="0,315 65,335 0,355" fill="#0f172a"/>
+
+      <!-- Outer Wing Fold Facets -->
+      <polygon points="-210,120 -180,240 -130,205" fill="#0f172a"/>
+      <polygon points="210,120 180,240 130,205" fill="#0b0f19"/>
+      <polygon points="-180,240 -110,320 -95,280" fill="#1e293b"/>
+      <polygon points="180,240 110,320 95,280" fill="#0f172a"/>
+
+      <!-- Core Telemetry Energy Ring (Center Chest) -->
+      <circle cx="0" cy="165" r="6" fill="#00f5ff"/>
+
+    </g>
+  </g>
+</svg>
