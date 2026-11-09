@@ -125,6 +125,7 @@ export type VisualAssetPrompt = z.infer<typeof VisualAssetPromptSchema>;
 export const CreativePackageSchema = z.object({
   gameId: z.string(),
   gameTitle: z.string(),
+  gameProfile: GameProfileSchema.optional(),
   generatedAt: z.string(),
   engineVersion: z.string(),
   providerUsed: z.string(),

@@ -22,24 +22,31 @@ export async function teardownCommand(options: TeardownCommandOptions): Promise<
       gameProfile = GameProfileSchema.parse(
         JSON.parse(fs.readFileSync(profilePath, "utf8"))
       );
-    } catch {
-      // fallback to generic
+    } catch (err: any) {
+      console.error(chalk.red(`Error parsing game profile at ${profilePath}: ${err.message}`));
+      process.exit(1);
+    }
+  } else {
+    // Check if sample exists in examples/
+    const samplePath = path.resolve(__dirname, "../../../examples/puzzle-pin-pull.json");
+    if (fs.existsSync(samplePath)) {
+      try {
+        gameProfile = GameProfileSchema.parse(
+          JSON.parse(fs.readFileSync(samplePath, "utf8"))
+        );
+      } catch {
+        // proceed
+      }
     }
   }
 
   if (!gameProfile) {
-    gameProfile = {
-      id: "my-game",
-      title: "My Mobile Game",
-      genre: "casual puzzle",
-      theme: "colorful world",
-      visualStyle: "3D stylized",
-      targetAudience: { playerMotivations: ["relaxation", "fun"] },
-      coreMechanics: ["solve puzzles with logic"],
-      failStates: ["running out of time"],
-      satisfyingMoments: ["board clear explosion"],
-      uniqueSellingPoints: ["100% authentic gameplay"],
-    };
+    console.error(
+      chalk.red(
+        "Error: Game profile not found. Please provide --profile <file> or run 'uacraft init' first."
+      )
+    );
+    process.exit(1);
   }
 
   console.log(chalk.bold.cyan(`\n=== UACraft Competitor Ad Teardown & Counter-Strategy ===`));

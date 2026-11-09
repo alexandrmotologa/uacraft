@@ -1,13 +1,13 @@
 import * as fs from "fs";
 import * as path from "path";
 import chalk from "chalk";
-import { CreativePackage, AngleType } from "../../types";
+import { CreativePackage, AngleType, GameProfile, GameProfileSchema } from "../../types";
 import { performHookSwap, mutateCopySet } from "../../core/mutator/variant-mutator";
-import { PRESET_PROFILES } from "./init";
 
 export interface MutateCommandOptions {
   input: string;
   angle?: string;
+  profile?: string;
   output?: string;
 }
 
@@ -27,18 +27,53 @@ export async function mutateCommand(options: MutateCommandOptions): Promise<void
     process.exit(1);
   }
 
+  // Resolve authentic game profile
+  let activeProfile: GameProfile | undefined = pkg.gameProfile;
+
+  if (options.profile) {
+    const customProfilePath = path.resolve(process.cwd(), options.profile);
+    if (fs.existsSync(customProfilePath)) {
+      try {
+        activeProfile = GameProfileSchema.parse(
+          JSON.parse(fs.readFileSync(customProfilePath, "utf8"))
+        );
+      } catch (err: any) {
+        console.error(chalk.red(`Error parsing profile: ${err.message}`));
+        process.exit(1);
+      }
+    }
+  }
+
+  if (!activeProfile) {
+    const defaultProfilePath = path.resolve(process.cwd(), "game-profile.json");
+    if (fs.existsSync(defaultProfilePath)) {
+      try {
+        activeProfile = GameProfileSchema.parse(
+          JSON.parse(fs.readFileSync(defaultProfilePath, "utf8"))
+        );
+      } catch {
+        // continue to check fallback
+      }
+    }
+  }
+
+  if (!activeProfile) {
+    console.error(
+      chalk.red(
+        "Error: Game profile not found. Please provide --profile <file> or ensure the package contains gameProfile data."
+      )
+    );
+    process.exit(1);
+  }
+
   const targetAngle: AngleType = (options.angle as AngleType) || "challenge-fail";
 
   console.log(chalk.bold.cyan(`\n=== UACraft Mutation Engine ===`));
-  console.log(chalk.gray(`Mutating scripts with target angle: ${targetAngle}`));
+  console.log(chalk.gray(`Mutating scripts for: ${activeProfile.title} using target angle: ${targetAngle}`));
 
-  // Perform hook swaps on each script
-  const dummyProfile = PRESET_PROFILES.puzzle;
-  dummyProfile.id = pkg.gameId;
-  dummyProfile.title = pkg.gameTitle;
-
+  // Perform hook swaps using the real game profile
   const mutatedScripts = pkg.scripts.map((s) => {
-    const swap = performHookSwap(s, dummyProfile, targetAngle);
+    const swap = performHookSwap(s, activeProfile!, targetAngle);
     return swap.mutatedScript;
   });
 

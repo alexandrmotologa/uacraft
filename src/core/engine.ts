@@ -84,6 +84,7 @@ export async function generateCreativePackage(
   const creativePackage: CreativePackage = {
     gameId: game.id,
     gameTitle: game.title,
+    gameProfile: game,
     generatedAt: new Date().toISOString(),
     engineVersion: ENGINE_VERSION,
     providerUsed,
