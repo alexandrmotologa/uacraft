@@ -1,0 +1,63 @@
+{
+  "id": "merge-rush-3d",
+  "title": "Merge Rush: Crowd Battle 3D",
+  "genre": "hypercasual",
+  "subgenre": "multiplier runner / crowd brawler",
+  "theme": "futuristic neon obstacle highway and cyber arena",
+  "visualStyle": "vibrant high-saturation 3D low poly with neon particle trails",
+  "targetAudience": {
+    "demographics": "Mobile gamers 16-35, reflex-driven and snackable sessions",
+    "playerMotivations": [
+      "adrenaline",
+      "power fantasy",
+      "visual progression",
+      "high score flexing"
+    ]
+  },
+  "coreMechanics": [
+    "swipe left and right to guide running squad through blue multiplier gates (+20, x3)",
+    "dodge spinning saw blades, wrecking balls, and fiery laser gates",
+    "fuse matching stickman warriors into armored super-giants before boss battle",
+    "clash with enemy tower guardians in an epic final fortress raid"
+  ],
+  "failStates": [
+    "accidental swipe into red division gate reducing crowd to 1 soldier",
+    "entire squad sliced by twin giant circular saw blades",
+    "underpowered squad overwhelmed by the final castle titan",
+    "falling through crumbling glass bridge tiles"
+  ],
+  "satisfyingMoments": [
+    "hitting a x5 multiplier gate and multiplying 20 soldiers into a 100-man army instantly",
+    "giant golden warrior delivering a knockout uppercut to the castle boss",
+    "massive slow-motion castle explosion showering celebratory fireworks",
+    "crowd chanting in unison at the winner podium"
+  ],
+  "uniqueSellingPoints": [
+    "silky smooth 60fps squad physics with over 500 units on screen simultaneously",
+    "over 50 unlockable custom skins and neon trail particle effects",
+    "dynamic boss fights with unique attack patterns every 5 levels",
+    "instant retry loop with zero wait times"
+  ],
+  "historicalData": {
+    "winningHooks": [
+      "Noob picked -50, Pro picked x4 multiplier!",
+      "Top 0.1% speedrun on the cyber highway",
+      "Oddly satisfying 500-man crowd merge"
+    ],
+    "fatiguedAngles": [
+      "challenge-fail"
+    ],
+    "topCtrHeadlines": [
+      "Can You Reach 500 Troops?",
+      "Noob vs Pro Gate Strategy",
+      "Oddly Satisfying Crowd Merge"
+    ],
+    "targetNetworks": [
+      "tiktok",
+      "meta",
+      "applovin"
+    ],
+    "historicalCpiAverage": 0.88,
+    "historicalCtrAverage": 3.4
+  }
+}

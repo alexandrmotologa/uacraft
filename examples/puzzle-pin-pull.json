@@ -1,0 +1,63 @@
+{
+  "id": "pin-pull-rescue",
+  "title": "Pin Rescue: Lost Treasure",
+  "genre": "puzzle",
+  "subgenre": "pin puller / logic physics",
+  "theme": "ancient subterranean ruins and volcanic chambers",
+  "visualStyle": "3D stylized cartoon with rich warm lighting and fluid physics",
+  "targetAudience": {
+    "demographics": "Casual players 22-55, high female and male appeal",
+    "playerMotivations": [
+      "relaxation",
+      "spatial problem-solving",
+      "clever deduction",
+      "stress relief"
+    ]
+  },
+  "coreMechanics": [
+    "pull golden pins in exact logical sequence",
+    "redirect lethal molten lava streams away from treasure chambers",
+    "pour clean water onto magma to turn it into harmless solid granite",
+    "drop boulder traps to neutralize lurking dungeon goblins"
+  ],
+  "failStates": [
+    "lava breaches the lower barrier and burns the adventurer",
+    "molten rock incinerates the chest of ancient gold relics",
+    "pulling the wrong pin frees goblins into the sanctuary",
+    "water barrier breached causing flooded dead end"
+  ],
+  "satisfyingMoments": [
+    "water splashing into bubbling lava causing a hiss and turning into solid stone",
+    "giant waterfall of 10,000 sparkling gold coins filling the victory chest",
+    "domino reaction where 4 pins release simultaneously to trap all monsters",
+    "hero doing a joyful victory dance with celebratory fanfare"
+  ],
+  "uniqueSellingPoints": [
+    "real physics simulation for water, lava, and acid fluids",
+    "over 400 hand-crafted brainteaser puzzles without artificial paywalls",
+    "satisfying tactile sound design on every pin release",
+    "offline play support with zero mandatory video ads"
+  ],
+  "historicalData": {
+    "winningHooks": [
+      "Why did 99% fail to pull the blue pin first?",
+      "Help him before the lava reaches the chest!",
+      "Oddly satisfying water-cooling lava physics"
+    ],
+    "fatiguedAngles": [
+      "story-drama"
+    ],
+    "topCtrHeadlines": [
+      "Can You Solve Level 12?",
+      "Oddly Satisfying Pin Puzzle",
+      "Only 1% Spot The Secret Pin"
+    ],
+    "targetNetworks": [
+      "meta",
+      "tiktok",
+      "google"
+    ],
+    "historicalCpiAverage": 1.75,
+    "historicalCtrAverage": 2.85
+  }
+}

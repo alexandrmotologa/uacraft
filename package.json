@@ -1,0 +1,46 @@
+{
+  "name": "uacraft",
+  "version": "1.0.0",
+  "description": "Multi-angle ad creative, video hook, and copy mutation engine for mobile user acquisition teams.",
+  "bin": {
+    "uacraft": "./bin/uacraft.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "bin"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "start": "node ./bin/uacraft.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "tsc --noEmit"
+  },
+  "keywords": [
+    "user-acquisition",
+    "mobile-marketing",
+    "mobile-gaming",
+    "ad-creatives",
+    "meta-ads",
+    "tiktok-ads",
+    "csv-export",
+    "creative-automation",
+    "mutation-engine",
+    "llm-pipeline",
+    "cli-tool"
+  ],
+  "author": "Alexandr Motologa",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^12.1.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "typescript": "^5.7.2",
+    "vitest": "^5.1.0"
+  }
+}
