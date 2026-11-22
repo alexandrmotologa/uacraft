@@ -1,6 +1,6 @@
 {
   "name": "uacraft",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Multi-angle ad creative, video hook, and copy mutation engine for mobile user acquisition teams.",
   "bin": {
     "uacraft": "./bin/uacraft.js"

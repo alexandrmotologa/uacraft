@@ -19,7 +19,7 @@ export interface EngineGenerateOptions extends LlmClientOptions {
   offline?: boolean;
 }
 
-export const ENGINE_VERSION = "1.0.0";
+export const ENGINE_VERSION = "1.1.0";
 
 export async function generateCreativePackage(
   rawGameProfile: unknown,

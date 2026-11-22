@@ -20,7 +20,18 @@ export function createCli(): Command {
     .description(
       "Multi-angle ad creative, video hook, and copy mutation engine for mobile user acquisition teams."
     )
-    .version("1.1.0");
+    .version("1.1.0", "-v, --version")
+    .option("-V", "output the version number", () => {
+      console.log(program.version());
+      process.exit(0);
+    });
+
+  program
+    .command("version")
+    .description("Display version information")
+    .action(() => {
+      console.log(`uacraft v${program.version()}`);
+    });
 
   program
     .command("init [file]")

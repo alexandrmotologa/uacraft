@@ -9,9 +9,11 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/alexandrmotologa/uacraft/actions/workflows/ci.yml"><img src="https://github.com/alexandrmotologa/uacraft/actions/workflows/ci.yml/badge.svg" alt="CI" /></a>
+  <a href="https://github.com/alexandrmotologa/uacraft/releases"><img src="https://img.shields.io/badge/version-v1.1.0-6366f1.svg?style=flat-square" alt="Version" /></a>
   <a href="#features"><img src="https://img.shields.io/badge/Status-Production--Ready-10b981.svg" alt="Status" /></a>
   <a href="#installation"><img src="https://img.shields.io/badge/Node.js-%3E%3D18.0.0-3b82f6.svg" alt="Node" /></a>
-  <a href="#testing"><img src="https://img.shields.io/badge/Tests-38%20Passing-10b981.svg" alt="Tests" /></a>
+  <a href="#testing"><img src="https://img.shields.io/badge/Tests-39%20Passing-10b981.svg" alt="Tests" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-gray.svg" alt="License" /></a>
 </p>
 

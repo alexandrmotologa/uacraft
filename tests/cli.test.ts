@@ -7,6 +7,15 @@ const cliPath = path.resolve(__dirname, "../bin/uacraft.js");
 const outputDir = path.resolve(__dirname, "test-output");
 
 describe("CLI Commands", () => {
+  it("outputs version with --version, -v, -V, and version subcommand", () => {
+    for (const flag of ["--version", "-v", "-V"]) {
+      const out = execSync(`node "${cliPath}" ${flag}`, { encoding: "utf8" });
+      expect(out.trim()).toBe("1.1.0");
+    }
+    const outCmd = execSync(`node "${cliPath}" version`, { encoding: "utf8" });
+    expect(outCmd).toContain("uacraft v1.1.0");
+  });
+
   it("runs init command and creates a profile", () => {
     const target = path.join(outputDir, "cli-test-game.json");
     if (fs.existsSync(target)) fs.unlinkSync(target);
